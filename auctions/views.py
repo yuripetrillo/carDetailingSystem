@@ -186,7 +186,7 @@ def closeListing(request, listing_id):
             try:
                 listing=Listing.objects.filter(pk=listing_id).first()
                 bids=Bid.objects.all().filter(listing=listing_id)
-                if listing is not None:
+                if listing is not None and len(bids) >= 1:
                     listing.winner = max(bids, key=lambda bidder: bidder.amount).user.username
                     listing.save()
                 return HttpResponseRedirect(reverse('listingpage', kwargs={'listing_id':listing_id}))
