@@ -1,0 +1,88 @@
+      {% block body %}
+        <div class="box-modal">
+            <div class="overlay"></div>
+            <div class="body-modal">
+            <div class="inner-body-modal">
+                <div class="text-center justify-content-center w3-white" style="width:450px;">
+                    <div class="text-center justify-content-center w3-white">
+                        <label for="Actual Cars">Message: <input id="timestampMessage" class="w3-padding-16" type="text" placeholder="From" name="From" disabled></label>
+                                <p><input id="fromUser" class="w3-input w3-padding-16" type="text" placeholder="From" name="fromUser" disabled></p>
+                                <p><input id="toUser" class="w3-input w3-padding-16" type="text" placeholder="To" name="toUser" disabled></p>
+                                <p><input id="subject" class="w3-input w3-padding-16" type="text" placeholder="Subject" name="contents" disabled></p>
+                                <p><input id="carPlate" class="w3-input w3-padding-16" type="text" placeholder="Car Plate" name="carPlate" disabled></p>
+                                <p><input id="contents" class="w3-input w3-padding-16" type="text" placeholder="contents" name="contents" disabled></p>
+                        </div>
+
+
+                        <div class="accordion" id="accordionPanelsStayOpenExample">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                Reply
+                              </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+                              <div class="accordion-body">
+                                <form action="{% url 'message' %}" method="post" id="formT" class="justify-content-center">
+                                    {% csrf_token %}
+                                    <p><input class="w3-input w3-padding-16" type="text" id="toUserNew" name="fromUser" readonly></p>
+                                    <p><input class="w3-input w3-padding-16" type="text" id="carPlateNew" name="carPlate" readonly></p>
+                                    <p><input class="w3-input w3-padding-16" type="text" id="subjectNew" name="subject" readonly></p>
+                                    <p><input class="w3-input w3-padding-16" type="text" placeholder="Message" id="contentsNew" required name="contents"></p>
+                                    <p>
+                                      <button class="btn btn-primary btn-sm" type="submit">
+                                        <i class="fa fa-paper-plane"></i> SEND MESSAGE
+                                      </button>
+                                    </p>
+                                  </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                </div>
+                <br><br><br>
+                <button type="button" class="btn-close" id="closeButton" data-close>
+                <span class="icon-cross"></span>
+                <span class="visually-hidden">Close</span>
+                </button>
+            </div>
+            </div>
+        </div>
+        <script>
+            $('#messagesPopup').on('click', function(){
+              $('body').addClass('active-modal');
+              $('.box-modal').addClass('modal-show');
+              $messageId = $('input[name^="messagesPopup"]').attr('name').replace('messagesPopup','');
+              $.get('/'+ $messageId+'/messageById')
+                .done(function(data) {
+                    jsonObj = JSON.parse(data);
+                    $('#fromUser').val("From: "+jsonObj.fromUser);
+                    $('#toUser').val("To: "+jsonObj.toUser);
+                    $('#toUserNew').val("From: "+jsonObj.toUser);
+                    $('#subject').val("Subject: "+jsonObj.subject);
+                    $('#subjectNew').val("Subject: "+jsonObj.subject);
+                    $('#carPlate').val("Car Plate: "+jsonObj.carPlate);
+                    $('#carPlateNew').val("Car Plate: "+jsonObj.carPlate);
+                    $('#contents').val("Message: "+jsonObj.contents);
+                    $('#timestampMessage').val(jsonObj.timestamp);
+                })
+                .always(function() {
+                });
+                $.get('/'+ $messageId+'/readMessageById')
+                .done(function(data) {
+                    console.log($messageId+' read correctly.');
+                })
+                .always(function() {
+                });
+            });
+              $('.overlay').on('click', function(){
+              $('body').removeClass('active-modal');
+              $('.box-modal').removeClass('modal-show');
+            })
+      
+            $('#closeButton').on('click', function(){
+              $('body').removeClass('active-modal');
+              $('.box-modal').removeClass('modal-show');
+            })
+           </script> 
+{% endblock %}

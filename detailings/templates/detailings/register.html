@@ -1,0 +1,20 @@
+{% extends "detailings/layout.html" %}
+
+{% block body %}
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+    <div class="login-dark text-center justify-content-center">
+        <form action="{% url 'register' %}" method="post">
+          {% csrf_token %}
+              <h2 class="sr-only">Login Form</h2>
+              <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+              <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Username"></div>
+              <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email Address"></div>
+              <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+              <div class="form-group"><input class="form-control" type="password" name="confirmation" placeholder="Confirm Password"></div>
+              <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div>
+              Already have an account? <a href="{% url 'login' %}"><br>Log In here.</a>
+            </form>
+      </div>
+{% endblock %}

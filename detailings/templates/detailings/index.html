@@ -1,0 +1,155 @@
+{% extends "detailings/layout.html" %}
+    <div class="text-center justify-content-center">
+      {% load static %}
+      {% block body %}
+        <div class="w3-padding-large" id="main">
+          <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+            <h1 class="w3-jumbo"><span class="w3-hide-small">NetCar by</span> Yuri Petrillo</h1>
+            <p>We offer Car Detailing Services</p>
+            <img src="{% static 'images/detailing2.jpg' %}" alt="detailing" class="w3-image" width="992" height="1108">
+          </header>
+
+
+          <br><br>
+          <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+            <h2 class="w3-text-light-grey">Description</h2>
+            <hr style="width:200px" class="w3-opacity">
+            <p>
+              Welcome to our premier car detailing services, where passion meets precision. At our state-of-the-art facility, we are dedicated to restoring your vehicle to its showroom glory. Our skilled technicians utilize cutting-edge techniques and premium products to rejuvenate your car's exterior and interior. From meticulous paint correction to luxurious interior detailing, we take pride in every detail. We understand that your car is more than just a mode of transportation; it's an expression of your lifestyle. That's why we go beyond the surface to deliver a comprehensive detailing experience. Trust us to enhance the aesthetic appeal and protect the value of your cherished vehicle. Discover the difference in our commitment to excellence – because your car deserves nothing less.
+            </p>
+            
+            <h3 class="w3-padding-16 w3-text-light-grey">Available Bundles</h3>
+            <div class="w3-row-padding" style="margin:0 -16px">
+              <div class="w3-half w3-margin-bottom">
+                <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+                  <li class="w3-dark-grey w3-xlarge w3-padding-32">Light</li>
+                  <li class="w3-padding-16">Standard Wash</li>
+                  <li class="w3-padding-16">Wheels Wash</li>
+                  <li class="w3-padding-16">Full Polishing</li>
+                  <li class="w3-padding-16">Engine cleaning</li>
+                  <li class="w3-padding-16">Free Gadget</li>
+                  <li class="w3-padding-16">
+                    <h2>$ 1000</h2>
+                    <span class="w3-opacity">Tantum</span>
+                  </li>
+                  <li class="w3-light-grey w3-padding-24">
+                    <button id="lightBundle" class="w3-button w3-white w3-padding-large w3-hover-black">Choose this</button>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="w3-half w3-margin-bottom">
+                <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+                  <li class="w3-dark-grey w3-xlarge w3-padding-32">Full</li>
+                  <li class="w3-padding-16">Standard Wash</li>
+                  <li class="w3-padding-16">Wheels Wash</li>
+                  <li class="w3-padding-16">Full Polishing</li>
+                  <li class="w3-padding-16">Engine cleaning</li>
+                  <li class="w3-padding-16">Decontamination</li>
+                  <li class="w3-padding-16">
+                    <h2>$ 1500</h2>
+                    <span class="w3-opacity">Tantum</span>
+                  </li>
+                  <li class="w3-light-grey w3-padding-24">
+                    <button id="fullBundle" class="w3-button w3-white w3-padding-large w3-hover-black">Choose this</button>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="w3-half w3-margin-bottom">
+                <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+                  <li class="w3-dark-grey w3-xlarge w3-padding-32">Deluxe</li>
+                  <li class="w3-padding-16">Standard Wash</li>
+                  <li class="w3-padding-16">Wheels Wash</li>
+                  <li class="w3-padding-16">Full Polishing</li>
+                  <li class="w3-padding-16">Decontamination & Ceramic Coating</li>
+                  <li class="w3-padding-16">PPF Application on headlights and rearlights</li>
+                  <li class="w3-padding-16">
+                    <h2>$ 2000</h2>
+                    <span class="w3-opacity">Tantum</span>
+                  </li>
+                  <li class="w3-light-grey w3-padding-24">
+                    <button id="deluxeBundle" class="w3-button w3-white w3-padding-large w3-hover-black">Choose this</button>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="w3-half w3-margin-bottom">
+                <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+                  <li class="w3-blue w3-xlarge w3-padding-32">Personalize your Service</li>
+                  <li class="w3-padding-16">
+                    <h2>Starting from: $ 1200</h2>
+                    <span class="w3-opacity">Tantum</span>
+                  </li>
+                  <li class="w3-padding-24">
+                      <input type="button" id="personalizedBundle" value="Personalize" class="w3-button w3-light-grey w3-padding-large w3-hover-black">
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {% include "detailings/popupCarSelection.html" %}
+
+          <div class="w3-padding-64 w3-content" id="photos">
+            <h2 class="w3-text-light-grey">My Photos</h2>
+            <hr style="width:200px" class="w3-opacity">
+
+            <div class="w3-row-padding" style="margin:0 -16px">
+              <div class="w3-half">
+                <img src="{% static 'images/detailing3.jpg' %}" style="width:100%">
+                <img src="{% static 'images/detailing4.jpg' %}" style="width:100%">
+                <img src="{% static 'images/detailing5.jpg' %}" style="width:100%">
+                <img src="{% static 'images/detailing6.jpg' %}" style="width:100%">
+                <img src="{% static 'images/detailing11.jpg' %}" style="width:100%">
+
+              </div>
+
+              <div class="w3-half">
+                <img src="{% static 'images/detailing7.jpg' %}" style="width:100%">
+                <img src="{% static 'images/detailing8.jpg' %}" style="width:100%">
+                <img src="{% static 'images/detailing9.jpg' %}" style="width:100%">
+                <img src="{% static 'images/detailing10.jpg' %}" style="width:100%">
+              </div>
+            </div>
+          </div>
+          <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
+            <h2 class="w3-text-light-grey">Contact Me</h2>
+            <hr style="width:200px" class="w3-opacity">
+
+            <div class="w3-section">
+              <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: +00 123456789</p>
+              <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: mailabc@mail.com</p>
+              <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> CountryName, US</p>
+            </div><br>
+            <p>Let's get in touch. Send me an istant message:</p>
+
+            <form action="{% url 'message' %}" method="post" id="formT" class="justify-content-center">
+              {% csrf_token %}
+              <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="fromUser"></p>
+              <p><input class="w3-input w3-padding-16" type="text" placeholder="Car Plate" required name="carPlate"></p>
+              <p><input class="w3-input w3-padding-16" type="text" placeholder="Subject" required name="subject"></p>
+              <p><input class="w3-input w3-padding-16" type="text" placeholder="Message" required name="contents"></p>
+              <p>
+                <button class="w3-button w3-light-grey w3-padding-large" type="submit">
+                  <i class="fa fa-paper-plane"></i> SEND MESSAGE
+                </button>
+              </p>
+            </form>
+          </div>
+          
+          <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+            <i class="fa fa-facebook-official w3-hover-opacity"></i>
+            <i class="fa fa-instagram w3-hover-opacity"></i>
+            <i class="fa fa-snapchat w3-hover-opacity"></i>
+            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+            <i class="fa fa-twitter w3-hover-opacity"></i>
+            <i class="fa fa-linkedin w3-hover-opacity"></i>
+          </footer>
+        </div>
+        </div>
+      </div>
+
+      <script>
+        window.onbeforeunload = null;
+      </script>
+{% endblock %}

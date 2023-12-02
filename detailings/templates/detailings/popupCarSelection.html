@@ -1,0 +1,150 @@
+      {% block body %}
+        <div class="box-modal">
+            <div class="overlay"></div>
+            <div class="body-modal">
+            <div class="inner-body-modal">
+                <div class="text-center justify-content-center w3-white">
+                <label for="Actual Cars">Your Cars</label>
+                <table class="styled-table justify-content-center">
+                    <thead>
+                        <tr>
+                            <th>Make</th>
+                            <th>Model</th>
+                            <th>Plate</th>
+                            <th>Check</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    - {{ username }}
+                    {% if cars != 0 %}
+                    {% for car in cars %}
+                        <tr>
+                        <td>{{car.make}}</td>
+                        <td>{{car.model}}</td>
+                        <td>{{car.plate}}</td>
+                        <form action="{% url 'indexCar' %}" method="post" id="formNewCar" class="justify-content-center">
+                        {% csrf_token %}
+                            <input type="hidden" name="carMake" id="carMake" value={{car.make}}>
+                            <input type="hidden" name="carModel" id="carModel" value={{car.model}}>
+                            <input type="hidden" name="carPlate" id="carPlate" value={{car.plate}}>
+                            <td><input type="submit" name="car" value="Select" class="btn btn-primary btn-sm"></td>
+                            </tr>
+                            <input type="hidden" value="{{car.id}}" name="hiddenVal" id="hiddenVal">
+                        </form>
+                        {% endfor %}
+                        {% else %}
+                        <div class="card-body">
+                            <h5 class="card-title card-text text-white bg-secondary bg-gradient">NO PREVIOUS CARS</h5>
+                        </div>
+                        {% endif %}
+                        <!-- and so on... -->
+                    </tbody>
+                </table>
+                <label for="Actual Cars">Add new car</label>
+                <br>
+                <form action="{% url 'indexCar' %}" method="post" id="formNewCar" class="justify-content-center">
+                    {% csrf_token %}
+                    <select name="make" id="make">
+                        <option disabled selected="selected">Select Make</option>
+                    </select>
+                    <select name="model" id="model" disabled>
+                        <option disabled selected="selected">Select Model</option>
+                    </select>
+                    <input type="text" name="plate" id="plate" value="Inser plate number" disabled>
+                    <input type="submit" name="car" class="btn btn-primary btn-sm" value="Insert">
+                </form>
+                </div>
+                <br><br><br>
+                <button type="button" class="btn-close" id="closeButton" data-close>
+                <span class="icon-cross"></span>
+                <span class="visually-hidden">Close</span>
+                </button>
+            </div>
+            </div>
+        </div>
+        <script>
+            $('#personalizedBundle').on('click', function(){
+              $('body').addClass('active-modal');
+              $('.box-modal').addClass('modal-show');
+              $.ajax({ 
+                  type:"GET", 
+                  url:"https://www.fueleconomy.gov/ws/rest/ympg/shared/menu/make", 
+                  success:function(data){ 
+                  var rows = data.childNodes[0].getElementsByTagName("value");
+                  // This assumes your <select> has id of "countries"
+                  $dropdown = $("#make");
+      
+              $(rows).each(function(index, row) {
+                  var fields = row,
+                  option = document.createElement('option');
+      
+                  $(fields).each(function(index, field) {
+                          var value = $(field).contents()[0].wholeText;
+                          option.value = value;
+                          option.innerHTML = value;
+                  });
+                  $dropdown.append(option);
+              });
+      
+              // Whenever you change which option is selected
+              $dropdown.change(function() {
+                  $option = $dropdown.find(":selected");
+                  $("#fixed").text($option.data("fixed"));
+                  $("#mobile").text($option.data("mobile"));
+                  $('#model').prop("disabled", $('#model').prop("disabled") == true ? false : true);
+                  
+                  $.ajax({ 
+                      type:"GET", 
+                      url:"https://www.fueleconomy.gov/ws/rest/ympg/shared/menu/model?make="+$option.contents()[0].wholeText, 
+                      success:function(data){ 
+                      var rows = data.childNodes[0].getElementsByTagName("value");
+                      $models = $("#model");
+                      $models.find('option')
+                      .remove()
+                      .end()
+                      .append('<option disabled selected="selected">Select Model</option>');
+      
+      
+                  $(rows).each(function(index, row) {
+                      var fields = row,
+                      option = document.createElement('option');
+      
+                      $(fields).each(function(index, field) {
+                              var value = $(field).contents()[0].wholeText;
+                              option.value = value;
+                              option.innerHTML = value;
+                              console.log(option);
+                      });
+                      $models.append(option);
+                  });
+      
+                  // Whenever change selected option
+                  $models.change(function() {
+                      $option = $models.find(":selected");
+                      $("#fixed").text($option.data("fixed"));
+                      $("#mobile").text($option.data("mobile"));
+                      $('#plate').prop("disabled", false);
+                      $('#plate').val("");
+                      //$('#model').prop("disabled", true);
+                  });
+                      },
+                      cache: false
+                  }); 
+                  
+              });
+                  },
+                  cache: false
+              }); 
+            });
+      
+            $('.overlay').on('click', function(){
+              $('body').removeClass('active-modal');
+              $('.box-modal').removeClass('modal-show');
+            })
+      
+            $('#closeButton').on('click', function(){
+              $('body').removeClass('active-modal');
+              $('.box-modal').removeClass('modal-show');
+            })
+           </script> 
+{% endblock %}
