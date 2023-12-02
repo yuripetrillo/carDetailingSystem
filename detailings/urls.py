@@ -9,6 +9,7 @@ urlpatterns = [
     path("logout", views.logout_view, name="logout"),
     path("register", views.register, name="register"),
     path("neworder", views.neworder, name="neworder"),
+    path("orders", views.orders, name="orders"),
     path("<int:order_id>/closeOrder", views.closeOrder, name="closeOrder"),
     path("message", views.message, name="message"),
     path("<int:messageId>/messageById", views.messageById, name="messageById"),

@@ -53,6 +53,7 @@
               $('body').addClass('active-modal');
               $('.box-modal').addClass('modal-show');
               $messageId = $('input[name^="messagesPopup"]').attr('name').replace('messagesPopup','');
+              console.log($messageId);
               $.get('/'+ $messageId+'/messageById')
                 .done(function(data) {
                     jsonObj = JSON.parse(data);

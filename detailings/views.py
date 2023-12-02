@@ -174,13 +174,16 @@ def neworder(request):
     if request.method == "POST":
        values = [[key.replace("Choice-",""), value] for key, value in request.POST.items()
                 if key.startswith('Choice-')]
+       formattedValues = [key.replace("Choice-","") for key, value in request.POST.items()
+                if key.startswith('Choice-')]
        car = Car.objects.get(plate=request.POST.get("carPlate"))
        order = Order(
        customer=User.objects.get(username=request.user),
        carPlate=car.plate,
-       description="", 
+       description="Order " + car.plate + str(datetime.now().strftime('%Y%m%d%f')),
        price=request.POST.get("totalVal"), 
-       timestamp=datetime.now(),
+       contents=formattedValues,
+       timestamp=datetime.now()
        )
        order.save()
        return render(request, "detailings/createOrder.html", {
@@ -191,6 +194,24 @@ def neworder(request):
                })
     else:
        return HttpResponse(500)
+    
+
+@login_required
+def orders(request):
+    if request.method != "POST":
+       if(request.user.username == 'yuriadmin'):
+           orders = Order.objects.all()
+       else:
+           orders = Order.objects.filter(customer=request.user)
+       return render(request, "detailings/orderPage.html", {
+                   "orders": orders,
+                   "username": request.user
+               })
+    else:
+       return render(request, "detailings/orderPage.html", {
+                   "orders": orders,
+                    "username": request.user
+       })
     
 @login_required
 def closeOrder(request, order_id):
