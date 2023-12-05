@@ -93,7 +93,7 @@ def message(request):
     if request.method == "POST":
         newMessage = Message(
         fromUser=request.user,
-        toUser=User.objects.get(username="yuriadmin"),
+        toUser=User.objects.get(username=request.POST.get("toUser")),
         carPlate=request.POST.get("carPlate"), 
         subject=request.POST.get("subject"), 
         contents=request.POST.get("contents"),
@@ -174,15 +174,13 @@ def neworder(request):
     if request.method == "POST":
        values = [[key.replace("Choice-",""), value] for key, value in request.POST.items()
                 if key.startswith('Choice-')]
-       formattedValues = [key.replace("Choice-","") for key, value in request.POST.items()
-                if key.startswith('Choice-')]
        car = Car.objects.get(plate=request.POST.get("carPlate"))
        order = Order(
        customer=User.objects.get(username=request.user),
        carPlate=car.plate,
        description="Order " + car.plate + str(datetime.now().strftime('%Y%m%d%f')),
        price=request.POST.get("totalVal"), 
-       contents=formattedValues,
+       contents=values,
        timestamp=datetime.now()
        )
        order.save()
@@ -203,6 +201,12 @@ def orders(request):
            orders = Order.objects.all()
        else:
            orders = Order.objects.filter(customer=request.user)
+       for order in orders:  
+            order.contents = order.contents.replace("[[","[")
+            order.contents = order.contents.replace("['","")   
+            order.contents = order.contents.replace("]]","]") 
+            order.contents = order.contents.replace("'","")
+            order.contents = order.contents.split("],")
        return render(request, "detailings/orderPage.html", {
                    "orders": orders,
                    "username": request.user

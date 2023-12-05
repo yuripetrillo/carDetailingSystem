@@ -61,7 +61,7 @@
         <a href="{% url 'message' %}" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
           <i class="fa fa-comments w3-xxlarge"></i>
           {% if read %}
-          <span class="badge badge-danger"><strong>UNREAD</strong></span>
+          <span class="badge badge-danger" id="unreadBadge"><strong>UNREAD</strong></span>
           {% endif %}
           <p>MESSAGES</p>
         </a>

@@ -16,7 +16,7 @@
               {% for message in messagesTo %}
               <a class="list-group-item list-group-item-action flex-column align-items-start w3-border">
                 {% if not message.read %}
-                  <span class="badge badge-pill badge-danger"><strong>UNREAD</strong></span>
+                  <span class="badge badge-pill badge-danger" id="unreadBadge2" style="visibility:visible;"><strong>UNREAD</strong></span>
                 {% endif %}
                 <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1 text-primary">{{ message.fromUser }}: {{ message.subject }}</h5><br>

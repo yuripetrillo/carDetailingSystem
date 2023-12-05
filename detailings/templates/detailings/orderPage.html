@@ -3,9 +3,9 @@
 {% block body %}
     {% load static %}
     <br><br>
-    <div class="card carBody4 text-center justify-content-center">
         {% for order in orders %}
-        <div class="card">
+        <br><br>
+        <div class="card carBody4 text-center justify-content-center">
           <div class="card-header">
             {% if "yuriadmin" != order.customer%}
               Order of: {{order.customer}}
@@ -16,14 +16,19 @@
           <div class="card-body">
             <h5 class="card-title">{{order.description}} - {{order.customer}}</h5>
             <p class="card-text">{{order.carPlate}}</p>
-            <p class="card-text">{{order.contents|cut:"["|cut:"]"|cut:"'"}}</p>
+            <p class="card-text">
+              {% for content in order.contents %}
+                <ul>
+                  <strong>{{content|cut:"["|cut:"]"|cut:"'"}}</strong>
+                </ul>
+              {% endfor %}
+            </p>
             <p class="card-text">$ {{order.price}}</p>
             <p class="card-text">{{order.timestamp}}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="#" class="btn btn-primary">Close order</a>
           </div>
         </div>
         {% endfor %}
-  </div>
   <script>
     window.onbeforeunload = null;
   </script>

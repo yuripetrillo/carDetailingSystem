@@ -25,7 +25,7 @@
                               <div class="accordion-body">
                                 <form action="{% url 'message' %}" method="post" id="formT" class="justify-content-center">
                                     {% csrf_token %}
-                                    <p><input class="w3-input w3-padding-16" type="text" id="toUserNew" name="fromUser" readonly></p>
+                                    <p><input class="w3-input w3-padding-16" type="text" id="toUserNew" name="toUser" readonly></p>
                                     <p><input class="w3-input w3-padding-16" type="text" id="carPlateNew" name="carPlate" readonly></p>
                                     <p><input class="w3-input w3-padding-16" type="text" id="subjectNew" name="subject" readonly></p>
                                     <p><input class="w3-input w3-padding-16" type="text" placeholder="Message" id="contentsNew" required name="contents"></p>
@@ -43,12 +43,16 @@
                 <br><br><br>
                 <button type="button" class="btn-close" id="closeButton" data-close>
                 <span class="icon-cross"></span>
-                <span class="visually-hidden">Close</span>
+                <span class="visually-hidden" id="closeButton">Close</span>
                 </button>
             </div>
             </div>
         </div>
         <script>
+            $('#closeButton').on('click', function(){
+              $('#unreadBadge').css({"visibility" : "hidden"});
+              $('#unreadBadge2').css({"visibility" : "hidden"});
+            });
             function messagesPopup(el){
               $('body').addClass('active-modal');
               $('.box-modal').addClass('modal-show');
@@ -58,12 +62,12 @@
                     jsonObj = JSON.parse(data);
                     $('#fromUser').val("From: "+jsonObj.fromUser);
                     $('#toUser').val("To: "+jsonObj.toUser);
-                    $('#toUserNew').val("From: "+jsonObj.toUser);
+                    $('#toUserNew').val(jsonObj.fromUser);
                     $('#subject').val("Subject: "+jsonObj.subject);
-                    $('#subjectNew').val("Subject: "+jsonObj.subject);
+                    $('#subjectNew').val(jsonObj.subject);
                     $('#carPlate').val("Car Plate: "+jsonObj.carPlate);
-                    $('#carPlateNew').val("Car Plate: "+jsonObj.carPlate);
                     $('#contents').val("Message: "+jsonObj.contents);
+                    $('#carPlateNew').val(jsonObj.carPlate);
                     $('#timestampMessage').val(jsonObj.timestamp);
                 })
                 .always(function() {
