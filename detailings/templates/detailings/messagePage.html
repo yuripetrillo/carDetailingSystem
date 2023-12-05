@@ -19,8 +19,8 @@
                   <span class="badge badge-pill badge-danger"><strong>UNREAD</strong></span>
                 {% endif %}
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1 text-primary">{{ message.fromUser }} Re: {{ message.subject }}</h5><br>
-                  <input type="button" class="btn btn-primary btn-sm" id="messagesPopup" name="messagesPopup{{message.id}}" value="View">
+                  <h5 class="mb-1 text-primary">{{ message.fromUser }}: {{ message.subject }}</h5><br>
+                  <input type="button" class="btn btn-primary btn-sm" id="messagesPopup{{message.id}}" name="messagesPopup{{message.id}}" onclick="messagesPopup(this)" value="View">
                 </div>
                 <span class="input-group-prepend">{{message.contents}}</span>
               </a>

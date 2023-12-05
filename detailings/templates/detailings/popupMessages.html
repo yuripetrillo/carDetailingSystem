@@ -49,11 +49,10 @@
             </div>
         </div>
         <script>
-            $('#messagesPopup').on('click', function(){
+            function messagesPopup(el){
               $('body').addClass('active-modal');
               $('.box-modal').addClass('modal-show');
-              $messageId = $('input[name^="messagesPopup"]').attr('name').replace('messagesPopup','');
-              console.log($messageId);
+              $messageId = el.id.replace('messagesPopup','');
               $.get('/'+ $messageId+'/messageById')
                 .done(function(data) {
                     jsonObj = JSON.parse(data);
@@ -75,7 +74,7 @@
                 })
                 .always(function() {
                 });
-            });
+            }
               $('.overlay').on('click', function(){
               $('body').removeClass('active-modal');
               $('.box-modal').removeClass('modal-show');
