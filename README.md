@@ -21,7 +21,7 @@ Welcome to the Car Detailing Management System, a web application that simplifie
 
 1. Clone the repository to your local system.
    ```bash
-   git clone https://github.com/yourusername/car-detailing-management.git
+   git clone https://github.com/yuripetrillo/car-detailing-management.git
    
    
    
