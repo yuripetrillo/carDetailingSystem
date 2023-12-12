@@ -1,62 +1,70 @@
 # Car Detailing Management System
 
-Welcome to the Car Detailing Management System, a web application that simplifies order management for a company specializing in car detailing services.
+Welcome to the Car Detailing Management System, a web application designed to streamline order management for a specialized car detailing service company. In this comprehensive guide, you'll find an in-depth overview and detailed instructions on running the application.
 
-## Key Features
+## Distinctiveness and Complexity
 
-- **Registration and Login:** Users can register on the site and log in to their personal accounts.
+### Project Overview
 
-- **Package Selection:** We offer a range of predefined service packages, categorized by type and price.
+My Car Detailing Management System satisfies the distinctiveness and complexity requirements by offering a tailored solution for managing car detailing orders. Unlike generic projects, this application focuses on a specific industry, providing a unique user experience for automotive enthusiasts and delves deep into the specific needs of a car detailing business, ensuring a unique and purpose-built service.
+The main distinctive feature of the project is the personalized orders section which, through svg-based graphics, allows a selection of the parts of the car to be treated in a graphic and interactive way which intelligently allows you to select, for example, both sides if you select elements that are not decoupled like the front wheels.
+It allows you to change your choices at any time even after the first choice of vehicle and in the event of involuntary closing of the page a prompt is shown to ensure that you really want to lose the order during creation.
 
-- **Customization:** The customizable package option allows users to select their vehicle or add a new one. They can then choose individual parts of the car for treatment through a convenient graphical interface or by using a checklist (checkbox).
+### Distinctiveness Criteria
 
-- **Messaging System:** A built-in messaging system allows communication between users and the company. Unread messages are highlighted on the home page, and clicking on the Messages page takes users to a dedicated area where they can view and respond to messages, seeking clarifications or making inquiries of any kind.
+1. **Industry Focus:** Addressing the unique requirements, this project of car detailing system application, stands out from generalized applications, providing a specialized service without relying on previous projects.
 
-## Technologies Used
+2. **Independence:** It is entirely independent, not derived from existing projects, ensuring originality and uniqueness.
 
-- **Frontend:** JavaScript, HTML, CSS
-- **Backend:** Python, Django Framework
+3. **Non-Social Network like:** While incorporating messaging features, the application is not a social network. Instead, it serves as a practical tool for managing car detailing orders/informations.
+The messaging system allows customers to communicate with the company directly, and they have their personal area with entry and exit boxes from which they can also check any notifications marked with a red badge in case of unread messages.
 
-## Installation
+4. **Differentiation from E-commerce Site:** Although resembling an e-commerce setup, the project is distinct because it focuses on services rather than physical products, and customization is tailored to car detailing specifics.
 
-1. Clone the repository to your local system.
-   ```bash
-   git clone https://github.com/yuripetrillo/car-detailing-management.git
-   
-   
-   
-# Distinctiveness and Complexity
+### Technical Complexity
 
-## Project Overview
+1. **Django and JavaScript Utilization:** The project leverages Django on the backend and utilizes multiple models to manage orders and car data. JavaScript, instead, enhances the frontend interactivity, ensuring an engaging user experience.
 
-Our Car Detailing Management System is designed to meet the distinctiveness and complexity requirements set forth in this course. Here's how our project satisfies each criterion:
+2. **Mobile-Responsiveness:** The user interface is designed to be responsive, ensuring an optimal viewing experience on various devices.
 
-### 1. Sufficiently Distinct from Other Projects
+## File Details
 
-Our web application stands out by addressing the specific needs of a car detailing business. Unlike other projects in this course, our focus is on managing orders for car detailing services, providing a unique user experience tailored to the automotive industry.
+- **README.md:** This file provides an overview of the project, covering distinctiveness, file details, running instructions, and additional information.
 
-### 2. Not Based on CS50W Pizza Project
+- **requirements:** There are no Python extra packages that needs installation for running the web application.
 
-Our project is entirely independent and not based on the old CS50W Pizza project. It is a custom-built solution with a specific niche focus, ensuring it meets the course requirements for originality.
+- **/detailings:** The main project directory containing all necessary files and subdirectories.
 
-### 3. Not A Social Network
+## Running the Application
 
-Our project is not a social network; it is a practical tool for managing car detailing orders. The messaging system is designed for communication between users and the company regarding service inquiries, distinct from a typical social network feature set.
+1. **Clone the Repository:** Use the following command to clone the repository to your local system.
+    ```bash
+    git clone https://github.com/yuripetrillo/carDetailingSystem
+    ```
 
-### 4. Distinct from Project 2 (E-commerce Site)
+2. **No Dependencies:** 
 
-While our application involves service packages and customization akin to an e-commerce site, it is distinct from Project 2. The focus here is on services rather than physical products, and the customization process is tailored to the unique requirements of car detailing.
+3. **Run the Application:** Execute the following command to run the application.
+    ```bash
+    python manage.py runserver
+    ```
 
-## Technical Details
+4. **Access the Application:** Open your web browser and go to [http://localhost:8000](http://localhost:8000) to access the Car Detailing Management System's Homepage.
 
-### 1. Django and JavaScript Utilization
+## Additional Information
+- **Extra informations:** The application uses an external source via API rest querying (U.S. API. Environmental Protection Agency) to have updated data of all car models and brands.
+Unfortunately in the demo the selection via select boxes was not captured because the video only captured the main window.
 
-Our web application fully utilizes Django on the back-end, including at least one model to manage order data. On the front-end, JavaScript is employed to enhance user interactivity and create a seamless experience.
+- **Distinctiveness:** The project's focus on car detailing services ensures its uniqueness. The README provides comprehensive details about the project's distinctive features and technical complexity.
 
-### 2. Mobile-Responsiveness
-
-The user interface is designed to be responsive, ensuring an optimal viewing and interaction experience across a variety of devices, including mobile phones and tablets.
+- **Contact:** For any inquiries or support, feel free to contact me at yuri.petrillo6@gmail.com.
 
 ## Conclusion
+**I hope you will appreciate my project!**
 
-Our Car Detailing Management System not only meets but exceeds the course requirements in terms of distinctiveness, complexity, and technical implementation. It provides a specialized solution for a real-world business scenario, showcasing the versatility and capabilities of the technologies used.
+Thank you for your time and consideration.
+
+**Demo Link:** [Car Detailing Management System Demo](https://clipchamp.com/watch/gVtfoEPbaFi)
+
+Best regards,
+[Yuri Petrillo]
